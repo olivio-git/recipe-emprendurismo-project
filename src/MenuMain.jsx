@@ -1,8 +1,11 @@
 import React from 'react'
+import { RenderModel } from './components/Model/RenderModel'
 
 const MenuMain = () => {
   return (
-    <div>MenuMain</div>
+    <div className='w-full h-screen bg-[#282A36] '>
+      <RenderModel></RenderModel> 
+    </div>
   )
 }
 
