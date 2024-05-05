@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { H1 } from "./components/H1";
 import { H1subtitle } from "./components/H1subtitle";
 import { H2 } from "./components/H2";
@@ -7,7 +8,7 @@ import { Pnotable } from "./components/Pnotable";
 import { PnotableTwo } from "./components/PnotableTwo";
 const data = {
   title: "Actividad académica final. 💻",
-  subtituloOne: "Primera parte",
+  subtituloOne: "Primer avance",
   l1: `Desarrollo, despliegue y administración de aplicaciones web en la nube ☁️.`,
   l2: "Almacenamiento y administración de archivos. 📁",
   l3: "Agencia de servicios de desarrollo web a medida, para sistemas de gestión y plataformas ECOMMERCE, etc. 🛒",
@@ -16,6 +17,7 @@ const data = {
   subtituloThree: "Tercera parte",
 };
 export const Inicio = () => {
+  const [modal, setModal] = useState(false);
   return (
     <>
       <div
@@ -25,9 +27,30 @@ export const Inicio = () => {
 	  dark:via-gray-800 via-gray-800
 	  dark:to-[#312152] to-[#312152]
 	  flex items-center justify-center rounded-tl-[70%] rounded-bl-[70%] rounded-tr-[70%] rounded-br-[70%]
-	  z-99 absolute blur-3xl"
+	  z-99 absolute blur-3xl "
       ></div>
+
       <div className="w-full flex flex-col justify-center items-center pt-10">
+        <div className="menu  text-sm font-light">
+          <h1 className="font-bold text-gray-700">Menú dinámico</h1>
+          <a href="#primera_parte">Primer avance</a>
+          <a href="#segunda_parte">Segundo avance</a>
+          <a href="#tercera_parte">Tercer avance</a>
+          <a href="#resumen_ejecutivo" className="pl-2">
+            -R.ejecutivo,FODA
+          </a>
+          <a href="#canvas" className="pl-2">
+            -Canvas B
+          </a>
+          <a href="#mision" className="pl-2">
+            -Misión Visión
+          </a>
+          <a href="#plan" className="pl-2">
+            -Plán de operación
+          </a>
+          <a href="#marketing" className="pl-2">-Plán de marketing</a>
+          <a href="#mapa" className="pl-2">-Mapa conceptual</a>
+        </div>
         <div
           className="flex w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] h-20 z-50 items-center justify-center
 		  border-white"
@@ -39,13 +62,14 @@ export const Inicio = () => {
             className="w-full flex flex-col items-center justify-center border-gray-600
             p-2 rounded-xl"
           >
-            <h1 className="font-bold text-2xl">Finger Job</h1>
+            <h1 className="font-bold text-4xl mb-5">Finger Job</h1>
             <Imagen client:only></Imagen>
-          </div> 
+          </div>
           <div
             className="w-full border-[0.2px] border-gray-600
 	          bg-white bg-opacity-5 p-2 rounded-xl"
           >
+            <div id="primera_parte"></div>
             <H1subtitle text={data.subtituloOne} />
             <H2
               text={
@@ -120,7 +144,8 @@ export const Inicio = () => {
             className="w-full border-[0.2px] border-gray-600
 	  bg-white bg-opacity-5 p-2 rounded-xl"
           >
-            <H1subtitle client:only text={"Segunda parte"} />
+            <div id="segunda_parte"></div>
+            <H1subtitle client:only text={"Segundo avance"} />
             <H2
               client:only
               text={
@@ -432,7 +457,9 @@ export const Inicio = () => {
             className="w-full border-[0.2px] border-gray-600
 	  bg-white bg-opacity-5 p-2 rounded-xl relative"
           >
-            <H1subtitle client:only text={"Tercera parte"} />
+            <div id="tercera_parte"></div>
+            <H1subtitle client:only text={"Tercer avance"} />
+            <div id="resumen_ejecutivo"></div>
             <H2 client:only text={"1. Resumen ejecutivo"} />
             <P
               client:only
@@ -505,6 +532,8 @@ export const Inicio = () => {
               </tbody>
             </table>
             <PnotableTwo client:only text={"MODELO CANVAS 'B'"} />
+            <div id="canvas"></div>
+
             <img
               className="rounded-lg cursor-pointer mt-2"
               src="https://i.ibb.co/CHxzHjT/dd.png"
@@ -521,6 +550,7 @@ export const Inicio = () => {
               }
             />
             <div className="p-8">
+              <div id="mision"></div>
               <div className="uppercase tracking-wide text-sm text-teal-200 font-semibold">
                 Misión
               </div>
@@ -665,7 +695,7 @@ export const Inicio = () => {
                 Características Principales
               </h2>
               <div className="flex flex-cols justify-between">
-                <ul className="list-disc grid gap-5 grid-cols-4  list-inside text-zinc-400">
+                <ul className="list-disc grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  list-inside text-zinc-400">
                   <li className="text-white h-max">
                     Landing Page de Inicio
                     <img
@@ -749,21 +779,6 @@ export const Inicio = () => {
                 </li>
               </ul>
             </div>
-
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-2 text-white font-light">
-                Ventajas Competitivas
-              </h2>
-              <p className="text-zinc-400">
-                Finger Job se destaca de otras plataformas de búsqueda de empleo
-                gracias a su enfoque en la seguridad, la transparencia y la
-                experiencia del usuario. Además, la integración de
-                características únicas, como la entrevista previa y el sistema
-                de calificación por estrellas, proporciona un valor añadido a
-                los usuarios.
-              </p>
-            </div>
-
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-2 text-white font-light">
                 Monetización
@@ -774,8 +789,47 @@ export const Inicio = () => {
                 ampliado, lo que proporciona una fuente adicional de ingresos
                 para la plataforma.
               </p>
+              <img
+                className="w-full"
+                src="https://i.ibb.co/vk8Pbpm/20Bs.png"
+                alt="planes"
+              />
+              <div className="w-full grid grid-cols-1 lg:grid-cols-2">
+                <div className="w-full flex-col items-center justify-center text-white p-5 bg-white bg-opacity-5">
+                  <h1 className="font-light text-xl text-[aqua]">
+                    Plan Gratuito: $0 BOB
+                  </h1>
+                  <ul className="w-full">
+                    <li>Perfiles básicos</li>
+                    <li>Búsqueda y aplicación de empleos diarios limitada</li>
+                    <li>Funcionalidades básicas de mensajería</li>
+                    <li>Acceso limitado a calificaciones y reseñas</li>
+                    <li>Publicaciones u ofertas de trabajo limitadas</li>
+                    <li>Publicidad cada cierto tiempo</li>
+                    <li>Poco alcance tanto en oferta de trabajos y demanda</li>
+                  </ul>
+                </div>
+                <div className="w-full flex flex-col justify-center text-white p-5 bg-white bg-opacity-5">
+                  <h1 className="font-light text-xl text-yellow-200">
+                    Plan Premium ($20 BOB):
+                  </h1>
+                  <ul className="w-full">
+                    <li>Perfiles avanzados, con opciones de personalización</li>
+                    <li>Búsqueda y aplicación de empleos diarios ilimitada</li>
+                    <li>Funcionalidades avanzadas de mensajería</li>
+                    <li>
+                      Acceso completo a detalles de calificaciones y reseñas
+                    </li>
+                    <li>
+                      Publicaciones u ofertas de trabajo diarias ilimitadas
+                    </li>
+                    <li>Publicidad cero</li>
+                    <li>Mayor alcance en búsquedas y publicaciones</li>
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-2 text-white font-light">
                 Consideraciones Legales y Éticas
@@ -787,7 +841,6 @@ export const Inicio = () => {
                 regulaciones laborales.
               </p>
             </div>
-
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-2 text-white font-light">
                 Feedback y Mejoras Futuras
@@ -804,6 +857,45 @@ export const Inicio = () => {
               client:only
               text={"5.	Plan de operaciones y gestión del emprendimiento"}
             />
+            <div class="p-4 bg-gray-100 text-white rounded-lg shadow-md mb-4 bg-opacity-5">
+              <div id="plan"></div>
+              <h2 class="text-xl font-semibold mb-2">Plan de Operaciones:</h2>
+              <ul class="list-disc list-inside">
+                <li class="mb-2">
+                  Equipo altamente calificado en desarrollo de aplicaciones
+                  móviles y gestión de proyectos.
+                </li>
+                <li class="mb-2">
+                  Proceso de desarrollo ágil para adaptarse rápidamente a los
+                  cambios del mercado.
+                </li>
+                <li class="mb-2">
+                  Transparencia y comunicación constante con los clientes.
+                </li>
+                <li class="mb-2">
+                  Gestión eficiente de recursos para maximizar la eficiencia y
+                  minimizar costos.
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-4 bg-gray-100  text-white rounded-lg shadow-md mb-4 bg-opacity-5">
+              <h2 class="text-xl font-semibold mb-2">
+                Gestión del Emprendimiento:
+              </h2>
+              <ul class="list-disc list-inside">
+                <li class="mb-2">Enfoque en la tecnología y la innovación.</li>
+                <li class="mb-2">
+                  Experiencia de usuario excepcional en todas las aplicaciones
+                  móviles.
+                </li>
+                <li class="mb-2">
+                  Servicio de alta calidad centrado en la satisfacción del
+                  cliente.
+                </li>
+                <li class="mb-2">Crecimiento sostenible a largo plazo.</li>
+              </ul>
+            </div>
             <P
               client:only
               text={
@@ -811,14 +903,83 @@ export const Inicio = () => {
               }
             />
             <H2 client:only text={"6.	Plan de marketing y ventas"} />
-            <P
-              client:only
-              text={
-                "Finger Job se promocionará a través de campañas de marketing digital en redes sociales, blogs y sitios web relevantes. Nuestro objetivo es llegar a una amplia audiencia de empleadores y trabajadores técnicos o profesionales, destacando los beneficios y características únicas de nuestra aplicación. Además, estableceremos alianzas estratégicas con empresas y organizaciones locales para promover Finger Job como una solución innovadora para la búsqueda y oferta de empleos en el mercado laboral actual."
-              }
-            />
+            <div class="p-4 bg-gray-100 rounded-lg shadow-md mb-4 bg-white bg-opacity-5">
+              <h2 class="text-xl font-semibold mb-2">
+                Plan de Marketing y Ventas:
+              </h2>
+              <div id="marketing"></div>
+              <p class="mb-4">
+                Finger Job se promocionará a través de campañas de marketing
+                digital en redes sociales, blogs y sitios web relevantes.
+                Utilizaremos anuncios pagados, publicaciones orgánicas y
+                contenido de valor para llegar a nuestra audiencia objetivo.
+              </p>
+
+              <p class="mb-4">
+                Nos centraremos en plataformas de redes sociales como Facebook,
+                Twitter, LinkedIn e Instagram para llegar a una amplia audiencia
+                de empleadores y trabajadores técnicos o profesionales.
+                Publicaremos regularmente contenido relevante y participaremos
+                activamente en conversaciones relacionadas con el empleo y la
+                tecnología.
+              </p>
+
+              <p class="mb-4">
+                Estableceremos alianzas estratégicas con empresas y
+                organizaciones locales para promover Finger Job como una
+                solución innovadora para la búsqueda y oferta de empleos en el
+                mercado laboral actual. Esto podría incluir colaboraciones en
+                eventos, intercambio de contenido y promoción cruzada.
+              </p>
+            </div>
+
             <H2 client:only text={"7.	anexos"} />
             <P client:only text={"- Mapa conceptual de la idea de negocio."} />
+            <div id="mapa"></div>
+            <img
+              src="https://i.ibb.co/0ZJgMBh/222.png"
+              alt="organigrama de roles"
+            />
+            {modal ? (
+              <div id="modal" class="fixed z-[1000] inset-0  ">
+                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                  <div
+                    class="fixed inset-0 transition-opacity"
+                    aria-hidden="true"
+                  >
+                    <div class="absolute inset-0 bg-gray-700 blur-2xl opacity-75"></div>
+                  </div>
+                  <span
+                    class="hidden sm:inline-block sm:align-middle sm:h-screen"
+                    aria-hidden="true"
+                  >
+                    &#8203;
+                  </span>
+                  <div
+                    class="inline-block align-bottom bg-white rounded-lg text-left
+                   overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                  >
+                    <div class="sm:flex sm:items-start">
+                      <img
+                        src="https://i.ibb.co/0ZJgMBh/222.png"
+                        alt="organigrama de roles"
+                      />
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                      <button
+                        onClick={() => setModal(false)}
+                        type="button"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                      >
+                        Cerrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+            <P client:only text={"-Desarrollo de un prototipo"} />
+            <img src="prototipo.png" alt="" />
           </div>
         </section>
       </div>

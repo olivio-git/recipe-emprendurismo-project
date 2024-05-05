@@ -7,8 +7,7 @@ import MenuMain from './MenuMain'
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<MenuMain/>} ></Route>
-      <Route path="/emprendimiento" element={<Inicio />} />
+      <Route path='/' element={<Inicio/>} ></Route> 
       <Route path="imagenes" element={<Imagenes />} />
     </Routes>
   )
